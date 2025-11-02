@@ -27,6 +27,7 @@ namespace LibraryBackend.Data
 
                 // Configure the Author and set maximum length
                 eb.Property(b => b.Author)
+                  .IsRequired()
                   .HasMaxLength(200);
 
                 // Configure the ISBN and set maximum length 

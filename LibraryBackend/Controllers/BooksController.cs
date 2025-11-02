@@ -47,8 +47,9 @@ namespace LibraryBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<BookReadDto>> Create([FromBody] BookCreateDto dto)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            
             var created = await _svc.CreateBook(dto);
             return CreatedAtRoute("GetBookById", new { id = created.Id }, created);
         }
