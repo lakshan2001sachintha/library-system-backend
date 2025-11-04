@@ -27,7 +27,7 @@ namespace LibraryBackend.Services
             Title = b.Title,
             Author = b.Author,
             ISBN = b.ISBN,
-            IsAvailable = b.IsAvailable
+            Category = b.Category
         };
 
 
@@ -55,7 +55,7 @@ namespace LibraryBackend.Services
                 Title = dto.Title,
                 Author = dto.Author,
                 ISBN = dto.ISBN,
-                IsAvailable = dto.IsAvailable
+                Category = dto.Category
             };
 
             _ctx.Books.Add(book);
@@ -75,7 +75,7 @@ namespace LibraryBackend.Services
             book.Title = dto.Title;
             book.Author = dto.Author;
             book.ISBN = dto.ISBN;
-            book.IsAvailable = dto.IsAvailable;
+            book.Category = dto.Category;
 
             _ctx.Books.Update(book);
             await _ctx.SaveChangesAsync();

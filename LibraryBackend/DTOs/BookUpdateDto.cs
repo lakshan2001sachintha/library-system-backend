@@ -14,6 +14,6 @@ namespace LibraryBackend.DTOs
         public string? ISBN { get; set; }
 
         [Required]
-        public bool IsAvailable{ get; set; }
+        public string Category { get; set; } = string.Empty;
     }
 }

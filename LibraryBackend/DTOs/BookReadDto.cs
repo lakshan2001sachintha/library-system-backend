@@ -8,7 +8,7 @@ namespace LibraryBackend.DTOs
         public string Title { get; set; } = null!; // avoid compilation error using "null!"
         public string? Author { get; set; }
         public string? ISBN { get; set; }
-        public bool IsAvailable{ get; set; }
+        public string Category { get; set; } = string.Empty;
         
     }
 }
