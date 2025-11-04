@@ -32,7 +32,12 @@ namespace LibraryBackend.Data
 
                 // Configure the ISBN and set maximum length 
                 eb.Property(b => b.ISBN)
-                  .HasMaxLength(50);
+                   .HasMaxLength(50);
+
+              // Add unique constraints
+              eb.HasIndex(b => b.Title).IsUnique();  // Title must be unique
+              eb.HasIndex(b => b.ISBN).IsUnique();  // ISBN must be unique
+
             });
 
             // Call the base implementation

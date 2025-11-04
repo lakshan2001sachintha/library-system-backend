@@ -30,6 +30,7 @@ namespace LibraryBackend.Controllers
         }
 
 
+
         // Get API for retrieves specific book by it's id
 
         [HttpGet("{id:int}", Name = "GetBookById")]
@@ -42,6 +43,7 @@ namespace LibraryBackend.Controllers
         }
 
 
+
         // Post API for Add a new book
 
         [HttpPost]
@@ -49,10 +51,22 @@ namespace LibraryBackend.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            
-            var created = await _svc.CreateBook(dto);
-            return CreatedAtRoute("GetBookById", new { id = created.Id }, created);
+
+            // var created = await _svc.CreateBook(dto);
+            // return CreatedAtRoute("GetBookById", new { id = created.Id }, created);
+
+            try
+            {
+                var created = await _svc.CreateBook(dto);
+                return CreatedAtRoute("GetBookById", new { id = created.Id }, created);
+            }
+            catch (InvalidOperationException ex)
+            {
+                // pass duplicate title / ISBN errors to frontend
+                return BadRequest(new { message = ex.Message});
+            }
         }
+
 
 
         // Put API for Update a book
@@ -64,11 +78,20 @@ namespace LibraryBackend.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var updated = await _svc.UpdateBook(id, dto);
-            if (!updated)
-                return NotFound();
-            return NoContent();
+            try
+            {
+                var updated = await _svc.UpdateBook(id, dto);
+                if (!updated)
+                    return NotFound();
+                
+                return NoContent();
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
+
 
 
         // Delete API for delete a specific book by it's id
