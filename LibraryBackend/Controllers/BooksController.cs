@@ -51,10 +51,6 @@ namespace LibraryBackend.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
-            // var created = await _svc.CreateBook(dto);
-            // return CreatedAtRoute("GetBookById", new { id = created.Id }, created);
-
             try
             {
                 var created = await _svc.CreateBook(dto);
@@ -72,12 +68,10 @@ namespace LibraryBackend.Controllers
         // Put API for Update a book
 
         [HttpPut("{id:int}")]
-
         public async Task<IActionResult> Update(int id, [FromBody] BookUpdateDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             try
             {
                 var updated = await _svc.UpdateBook(id, dto);
