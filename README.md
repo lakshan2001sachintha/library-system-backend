@@ -42,19 +42,12 @@ cd LibraryBackend
 ```bash
 dotnet restore
 ```
-### 3. Add EF Core packages (if missing)
-```bash
-dotnet add package Microsoft.EntityFrameworkCore
-dotnet add package Microsoft.EntityFrameworkCore.Sqlite
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Swashbuckle.AspNetCore
-```
-### 4. Create database (SQLite)
+### 3. Create database (SQLite)
 ```bash
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
-### 5. Run the application
+### 4. Run the application
 ```bash
 dotnet run
 ```
