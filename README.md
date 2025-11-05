@@ -1,4 +1,4 @@
-# 📚 LibraryBackend — .NET Library Management API
+# 📚 Library Management System - Backend
 
 A lightweight **CRUD Web API** built with **.NET 9**, **Entity Framework Core**, and **SQLite** to manage library books.  
 It supports basic operations like **Add**, **View**, **Update**, and **Delete** books and follows a clean **MVC** architecture.
@@ -10,7 +10,7 @@ It supports basic operations like **Add**, **View**, **Update**, and **Delete** 
 
 
 ```bash
-LIBRARY-BACKEND/
+LibraryBackend/
 ├── Controllers/         
 │   └── BooksController.cs
 ├── Data/                

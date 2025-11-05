@@ -6,9 +6,11 @@ namespace LibraryBackend.DTOs
     public class BookCreateDto
     {
         [Required]
+        [MaxLength(50)]
         public string Title { get; set; } = null!; // avoid compilation error using "null!"
 
         [Required]
+        [MaxLength(50)]
         public string Author { get; set; } = null!;
 
         public string? ISBN { get; set; }
