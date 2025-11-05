@@ -33,6 +33,9 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 // Add your BookService if you have one
 builder.Services.AddScoped<IBookService, BookService>();
 
+// Add AuthService for authentication
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 var app = builder.Build();
 
 // Configure middleware

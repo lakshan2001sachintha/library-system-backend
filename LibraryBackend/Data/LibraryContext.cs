@@ -11,6 +11,9 @@ namespace LibraryBackend.Data
         // Represent the Book table in the database
         public DbSet<Book> Books { get; set; } = null!;
 
+        // Represent the User table in the database
+        public DbSet<User> Users { get; set; } = null!;
+
         // Configure the EF Core model and entity relationships
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +41,35 @@ namespace LibraryBackend.Data
               eb.HasIndex(b => b.Title).IsUnique();  // Title must be unique
               eb.HasIndex(b => b.ISBN).IsUnique();  // ISBN must be unique
 
+            });
+
+            // Configure the User entity
+            modelBuilder.Entity<User>(eu =>
+            {
+                // Specify the primary key for the User entity
+                eu.HasKey(u => u.Id);
+
+                // Configure the Username and set maximum length
+                eu.Property(u => u.Username)
+                  .IsRequired()
+                  .HasMaxLength(100);
+
+                // Configure the Email and set maximum length
+                eu.Property(u => u.Email)
+                  .IsRequired()
+                  .HasMaxLength(200);
+
+                // Configure the PasswordHash as required
+                eu.Property(u => u.PasswordHash)
+                  .IsRequired();
+
+                // Configure the FullName and set maximum length
+                eu.Property(u => u.FullName)
+                  .HasMaxLength(100);
+
+                // Add unique constraints
+                eu.HasIndex(u => u.Username).IsUnique(); // Username must be unique
+                eu.HasIndex(u => u.Email).IsUnique(); // Email must be unique
             });
 
             // Call the base implementation
