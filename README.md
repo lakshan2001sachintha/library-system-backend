@@ -5,7 +5,8 @@
 A lightweight **CRUD Web API** built with **.NET 9**, **Entity Framework Core**, and **SQLite** to manage library books.  
 It supports basic operations like **Add**, **View**, **Update**, and **Delete** books and follows a clean **MVC** architecture.
 
-**And get a book Analysis**
+And get a **Book Analysis**
+
 ![Analysis Page](./images/Analysis.png)
 ---
 
